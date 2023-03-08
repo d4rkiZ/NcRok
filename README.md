@@ -20,15 +20,12 @@ When you are finished, press Ctrl+C to stop the script and terminate the ngrok a
 
 ## What it does ## 
 
-Got tired of creating a listener and then open a tunnel for it using ngrok / localtunnel etc?
-this script will help you save some time.
-This script is designed to create a TCP tunnel using ngrok and netcat, which allows a user to remotely access a local network service. it prompts the user to enter a port number and then starts a netcat listener on that port.
+This script streamlines the process of creating a TCP tunnel to remotely access a local network service. Specifically, the script utilizes the ngrok and netcat utilities to facilitate this process.
 
-Next, the script starts an ngrok TCP server on the same port, which creates a secure tunnel to expose the netcat listener to the internet. it uses a trap to ensure that the ngrok and netcat processes are properly killed when the script receives a SIGINT signal (i.e. when the user presses Ctrl+C).
+Upon execution, the user is prompted to enter a port number, after which the script initializes a netcat listener on that port. The script subsequently establishes an ngrok TCP server on the same port, thereby creating a secure tunnel through which the netcat listener can be accessed from the internet. A trap is implemented to ensure that the ngrok and netcat processes are properly terminated upon receipt of a SIGINT signal.
 
-then it waits for the ngrok TCP server to start and retrieves the public URL using the ngrok API. If the URL starts with "tcp://", the script extracts the TCP IP port and prints a message informing the user how to access the listener from the WAN.
+The script then waits for the ngrok TCP server to commence operation and retrieves the public URL using the ngrok API. If the URL commences with "tcp://", the script extracts the TCP IP port and conveys to the user how they can access the listener from the WAN.
 
-Finally, the script waits for a netcat connection to be established and then kills the ngrok and netcat processes. The script uses a while loop to constantly check whether a connection has been established, and it sleeps for 1 second between each check.
-
+Lastly, the script waits for a netcat connection to be established, following which the ngrok and netcat processes are terminated. A while loop is employed to periodically verify if a connection has been established, and the script pauses for one second between each iteration.
 
 
