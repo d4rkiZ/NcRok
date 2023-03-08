@@ -3,13 +3,19 @@
 To use this script, you can follow these steps:
 
 Save the script as a file with a ".sh" extension (e.g. "ngrok-netcat-tcp.sh").
+
 Make the script executable by running the following command in your terminal: chmod +x ngrok-netcat-tcp.sh.
+
 Run the script by entering the following command in your terminal: ./ngrok-netcat-tcp.sh.
+
 When prompted, enter the port number for the local network service that you want to expose to the internet.
 Wait for the script to start the netcat listener and ngrok TCP server, and then retrieve the TCP IP port number that you can use to access the listener from the WAN.
+
 Use a client application (e.g. telnet or netcat) to connect to the TCP IP port and access the local network service.
+
 When you are finished, press Ctrl+C to stop the script and terminate the ngrok and netcat processes.
-Note that this script requires the ngrok and jq utilities to be installed on your system. You can install ngrok by visiting the ngrok website (https://ngrok.com) and downloading the appropriate version for your system. You can install jq by running the following command in your terminal: sudo apt-get install jq (for Debian/Ubuntu) or sudo yum install jq (for CentOS/RHEL).
+
+*Note that this script requires the ngrok and jq utilities to be installed on your system. You can install ngrok by visiting the ngrok website (https://ngrok.com) and downloading the appropriate version for your system. You can install jq by running the following command in your terminal: sudo apt-get install jq (for Debian/Ubuntu) or sudo yum install jq (for CentOS/RHEL).*
 
 
 ## What it does ## 
