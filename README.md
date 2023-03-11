@@ -21,11 +21,11 @@ Lastly, the script waits for a netcat connection to be established, following wh
 
 To use this script, you can follow these steps:
 
-Save the script as a file with a ".sh" extension (e.g. "ngrok-netcat-tcp.sh").
+Save the script as a file with a ".sh" extension (e.g. "NcRok.sh").
 
-Make the script executable by running the following command in your terminal: chmod +x ngrok-netcat-tcp.sh.
+Make the script executable by running the following command in your terminal: chmod +x NcRok.sh.
 
-Run the script by entering the following command in your terminal: ./ngrok-netcat-tcp.sh.
+Run the script by entering the following command in your terminal: ./NcRok.sh.
 
 When prompted, enter the port number for the local network service that you want to expose to the internet.
 Wait for the script to start the netcat listener and ngrok TCP server, and then retrieve the TCP IP port number that you can use to access the listener from the WAN.
