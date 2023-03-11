@@ -2,10 +2,8 @@
 
 # Function to kill ngrok process and netcat listener
 function kill_ngrok {
-    pkill ngrok
-    if pgrep -x nc > /dev/null; then
-        pkill nc
-    fi
+    pkill -P $$ # Kill all child processes
+    exit 0
 }
 
 # Get user input for port number
