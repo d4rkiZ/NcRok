@@ -28,7 +28,10 @@ while true; do
     ngrok_url=$(curl -s localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')
     if [[ $ngrok_url == *"tcp://"* ]]; then
         tcp_port=${ngrok_url#*tcp://}
-        echo -e "\e[1mAccess the listener from the WAN using TCP IP port: \e[32m$tcp_port\e[0m"
+        ngrok_domain=${ngrok_url#*//}
+        ngrok_domain=${ngrok_domain%%:*}
+        ngrok_ip=$(dig +short $ngrok_domain)
+        echo -e "\e[1mAccess the listener from the WAN using TCP IP address: \e[32m$ngrok_ip\e[0m, address+port: \e[32m$tcp_port\e[0m"
         break
     fi
     sleep 1
@@ -42,4 +45,3 @@ while true; do
     fi
     sleep 1
 done
-
