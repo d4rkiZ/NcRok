@@ -9,7 +9,7 @@ This script streamlines the process of creating a TCP tunnel to remotely access 
 
 Upon execution, the user is prompted to enter a port number, after which the script initializes a netcat listener on that port. The script subsequently establishes an ngrok TCP server on the same port, thereby creating a secure tunnel through which the netcat listener can be accessed from the internet. A trap is implemented to ensure that the ngrok and netcat processes are properly terminated upon receipt of a SIGINT signal.
 
-The script then waits for the ngrok TCP server to commence operation and retrieves the public URL using the ngrok API while also using "dig" to get its ip address. If the URL commences with "tcp://", the script extracts the TCP IP port and conveys to the user how they can access the listener from the WAN.
+The script then waits for the ngrok TCP server to commence operation and retrieves the public URL using the ngrok API while also using "dig" to get its ip address.
 
 Lastly, the script waits for a netcat connection to be established, following which the ngrok and netcat processes are terminated. A while loop is employed to periodically verify if a connection has been established, and the script pauses for one second between each iteration.
 
