@@ -15,9 +15,9 @@ Lastly, the script waits for a netcat connection to be established, following wh
 
 ## Dependencies ##
 
-xterm
-ngrok
-jq
+* xterm
+* ngrok
+* jq
 
 
 
