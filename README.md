@@ -13,6 +13,11 @@ The script then waits for the ngrok TCP server to commence operation and retriev
 
 Lastly, the script waits for a netcat connection to be established, following which the ngrok and netcat processes are terminated. A while loop is employed to periodically verify if a connection has been established, and the script pauses for one second between each iteration.
 
+## Dependencies ##
+
+xterm
+ngrok
+jq
 
 
 
