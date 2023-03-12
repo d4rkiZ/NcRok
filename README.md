@@ -19,6 +19,11 @@ Lastly, the script waits for a netcat connection to be established, following wh
 * ngrok
 * jq
 
+can be installed by using requirements.sh
+* chmod +x requirements.sh
+* bash requirements.sh
+
+
 
 
 
