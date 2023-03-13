@@ -14,7 +14,7 @@ Lastly, the script waits for a netcat connection to be established, following wh
 
 ## Dependencies ##
 
-* xterm
+* xterm / konsole / genome-terminal
 * ngrok
 * jq
 
