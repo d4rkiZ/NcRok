@@ -14,9 +14,9 @@ Lastly, the script waits for a netcat connection to be established, following wh
 
 ## Dependencies ##
 
-* xterm / konsole / genome-terminal
+* xterm / konsole / genome-terminal  [unless you use ncrok.py]
 * ngrok
-* jq
+* jq 
 
 can be installed by using requirements.sh
 * chmod +x requirements.sh
@@ -30,7 +30,7 @@ can be installed by using requirements.sh
 
 To use this script, you can follow these steps:
 
-Save the script as a file with a ".sh" extension (e.g. "NcRok.sh").
+Save the script as a file with a ".sh" extension (e.g. "NcRok.sh"). [or just download and save NcRok.py]
 
 Make the script executable by running the following command in your terminal: chmod +x NcRok.sh.
 
