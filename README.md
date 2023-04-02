@@ -30,7 +30,7 @@ can be installed by using requirements.sh
 
 To use this script, you can follow these steps:
 
-Save the script as a file with a ".sh" extension (e.g. "NcRok.sh"). [or just download and save NcRok.py]
+Save the script as a file with a ".sh" extension (e.g. "NcRok.sh") [or just download and save NcRok.py].
 
 Make the script executable by running the following command in your terminal: chmod +x NcRok.sh.
 
